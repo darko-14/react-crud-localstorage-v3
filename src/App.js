@@ -52,8 +52,9 @@ class App extends Component {
   }
 
   onDelete = id => {
-    this.setState({contacts: this.state.contacts.filter((i) => i.id !== id)})
-    localStorage.setItem("list", JSON.stringify(this.state.contacts.filter((i) => i.id !== id)));
+    var list = this.getContacts().filter((record)=> record.id !== id)
+    this.setState({contacts: list})
+    localStorage.setItem("list", JSON.stringify(list));
   }
 
   onEdit = index => {
