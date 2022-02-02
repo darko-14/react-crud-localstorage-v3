@@ -2,26 +2,23 @@ import React, { Component } from 'react';
 
 class ContactForm extends Component {
 
-    state = {
-        name: '',
-        phone: ''
-    }
-    
-    componentDidUpdate(prevProps){
-        if(prevProps.currentIndex !== this.props.currentIndex){
-            this.setState(this.props.contacts[this.props.currentIndex])
+    constructor(props){
+        super(props)
+        this.state = {
+            name: props.contact ? props.contact.name : '',
+            phone: props.contact ? props.contact.phone : ''
         }
     }
-
+    
     handleAdd(e){
         e.preventDefault()
-        this.props.onAdd({ name: this.state.name, phone: this.state.phone })
+        this.props.onContactChange({ name: this.state.name, phone: this.state.phone })
         this.setState({name: '', phone: ''})
     }
 
     render() {
         return (
-            <form className='form' onSubmit={e => this.handleAdd(e)}>
+            <form className='form' onSubmit={e => this.handleAdd(e)}>               
                 <h2>Add new contact</h2>
                 <input name='name' 
                     value={this.state.name} 
