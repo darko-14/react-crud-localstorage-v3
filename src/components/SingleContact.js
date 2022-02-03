@@ -13,7 +13,7 @@ class SingleContact extends Component {
     render() {
         return (
             <div className='contact'>
-                <h3>{this.props.contact.id}. {this.props.contact.name}</h3>
+                <h3>{this.props.index+1}. {this.props.contact.name}</h3>
                 <h4>{this.props.contact.phone}</h4>
                 <div style={{marginTop: 17}}>
                     <button className='btn' onClick={this.handleOnEdit} >Edit</button>
